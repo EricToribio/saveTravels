@@ -33,24 +33,19 @@ public Expense findExpense(Long id) {
         return null;
     }
 }
-//public Book updateBook(
-//		Long id, 
-//		String title, 
-//		String description, 
-//		String language, 
-//		Integer numberOfPages) {
-//	Optional<Book> optionalBook = bookRepository.findById(id);
-//	if(optionalBook.isPresent()) {
-//		Book book = optionalBook.get();
-//		book.setTitle(title);
-//		book.setDescription(description);
-//		book.setLanguage(language);
-//		book.setNumberOfPages(numberOfPages);
-//		return bookRepository.save(book);
-//	} else {
-//		return null;
-//	}	
-//}
+public Expense updateExpense(Expense updatedExpense,Long id) {
+	Optional<Expense> optionalExpense = repo.findById(id);
+	if(optionalExpense.isPresent()) {
+		Expense expense = optionalExpense.get();
+		expense.setExpenseName(updatedExpense.getExpenseName());;
+		expense.setVendor(updatedExpense.getVendor());;
+		expense.setPrice(updatedExpense.getPrice());;
+		expense.setDescription(updatedExpense.getDescription());;
+		return repo.save(expense);
+	} else {
+		return null;
+	}	
+}
 public String delete(Long id) {
 	Optional<Expense> optionalExpense = repo.findById(id);
 	if(optionalExpense.isPresent()) {
